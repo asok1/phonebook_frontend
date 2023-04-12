@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://phonebook-backend-ft5w.onrender.com/api/persons'
+const baseUrl = process.env.REACT_APP_backend_base_url
 
 const getAll = () => {
   const request = axios.get(baseUrl)
