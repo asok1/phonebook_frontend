@@ -1,5 +1,5 @@
 {
-  "name": "part2",
+  "name": "phonebook_frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,9 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p3001 --watch db.json",
-    "start:local": "env-cmd -f local.env npm start",
-    "build:dev": "env-cmd -f dev.env npm run build"
+    "server": "json-server -p3001 --watch db.json"
   },
   "eslintConfig": {
     "extends": [
