@@ -42,15 +42,24 @@ const EntryForm = ({persons, setPersons, setSearchPersons, setNotificationMessag
                             setNotificationMessage(null)
                         }, 5000)
                     })
-                setPersons(persons.concat(updatedPersonObject))
+                    .catch(error => {
+                        setNotificationMessage(
+                            error.response.data.error
+                          )
+                          setIsErrorNotification(true)
+                          refreshPersonsList()
+                          setTimeout(() => {
+                              setNotificationMessage(null)
+                          }, 5000)
+                    })
+                // setPersons(persons.concat(updatedPersonObject))
                 setNewName('')
                 setNewPhoneNumber('')
             }
         } else {
             const newPersonObject = {
                 name: newName,
-                number: newPhoneNumber,
-                id: Math.max(...persons.map(p => p.id)) + 1
+                number: newPhoneNumber
             }
             personsService
                 .create(newPersonObject)
@@ -64,7 +73,17 @@ const EntryForm = ({persons, setPersons, setSearchPersons, setNotificationMessag
                         setNotificationMessage(null)
                     }, 5000)
                 })
-            setPersons(persons.concat(newPersonObject))
+                .catch(error => {
+                    setNotificationMessage(
+                        error.response.data.error
+                      )
+                      setIsErrorNotification(true)
+                      refreshPersonsList()
+                      setTimeout(() => {
+                          setNotificationMessage(null)
+                      }, 5000)
+                })
+            // setPersons(persons.concat(newPersonObject))
             setNewName('')
             setNewPhoneNumber('')
         }
