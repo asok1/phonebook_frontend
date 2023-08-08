@@ -2,7 +2,7 @@ import axios from 'axios'
 const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL
 
 const getAll = () => {
-  console.log('env', process.env.NODE_ENV)
+  console.log(process.env)
   const request = axios.get(baseUrl)
   return request.then(response => response.data)
 }
